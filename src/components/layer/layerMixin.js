@@ -1,4 +1,3 @@
-// import withRegistration from "../../lib/withRegistration";
 import withEvents from "../../lib/withEvents";
 
 const mapboxSourceProps = {
@@ -71,60 +70,60 @@ export default {
   },
 
   created() {
-    if (this.layer.minzoom) {
-      this.$watch("layer.minzoom", function(next) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, next, this.layer.maxzoom);
-      });
-    }
-
-    if (this.layer.maxzoom) {
-      this.$watch("layer.maxzoom", function(next) {
-        if (this.initial) return;
-        this.map.setLayerZoomRange(this.layerId, this.layer.minzoom, next);
-      });
-    }
-
-    if (this.layer.paint) {
-      this.$watch(
-        "layer.paint",
-        function(next) {
-          if (this.initial) return;
-          if (next) {
-            for (let prop of Object.keys(next)) {
-              this.map.setPaintProperty(this.layerId, prop, next[prop]);
-            }
-          }
-        },
-        { deep: true }
-      );
-    }
-
-    if (this.layer.layout) {
-      this.$watch(
-        "layer.layout",
-        function(next) {
-          if (this.initial) return;
-          if (next) {
-            for (let prop of Object.keys(next)) {
-              this.map.setLayoutProperty(this.layerId, prop, next[prop]);
-            }
-          }
-        },
-        { deep: true }
-      );
-    }
-
-    if (this.layer.filter) {
-      this.$watch(
-        "layer.filter",
-        function(next) {
-          if (this.initial) return;
-          this.map.setFilter(this.layerId, next);
-        },
-        { deep: true }
-      );
-    }
+    //     if (this.layer.minzoom) {
+    //       this.$watch("layer.minzoom", function(next) {
+    //         if (this.initial) return;
+    //         this.map.setLayerZoomRange(this.layerId, next, this.layer.maxzoom);
+    //       });
+    //     }
+    //
+    //     if (this.layer.maxzoom) {
+    //       this.$watch("layer.maxzoom", function(next) {
+    //         if (this.initial) return;
+    //         this.map.setLayerZoomRange(this.layerId, this.layer.minzoom, next);
+    //       });
+    //     }
+    //
+    //     if (this.layer.paint) {
+    //       this.$watch(
+    //         "layer.paint",
+    //         function(next) {
+    //           if (this.initial) return;
+    //           if (next) {
+    //             for (let prop of Object.keys(next)) {
+    //               this.map.setPaintProperty(this.layerId, prop, next[prop]);
+    //             }
+    //           }
+    //         },
+    //         { deep: true }
+    //       );
+    //     }
+    //
+    //     if (this.layer.layout) {
+    //       this.$watch(
+    //         "layer.layout",
+    //         function(next) {
+    //           if (this.initial) return;
+    //           if (next) {
+    //             for (let prop of Object.keys(next)) {
+    //               this.map.setLayoutProperty(this.layerId, prop, next[prop]);
+    //             }
+    //           }
+    //         },
+    //         { deep: true }
+    //       );
+    //     }
+    //
+    //     if (this.layer.filter) {
+    //       this.$watch(
+    //         "layer.filter",
+    //         function(next) {
+    //           if (this.initial) return;
+    //           this.map.setFilter(this.layerId, next);
+    //         },
+    //         { deep: true }
+    //       );
+    //     }
   },
 
   beforeDestroy() {
@@ -194,5 +193,5 @@ export default {
     }
   },
 
-  render() {}
+  render(h) {}
 };

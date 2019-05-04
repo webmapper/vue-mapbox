@@ -1,13 +1,5 @@
-<template>
-  <div style="display: none">
-    <!-- slot for custom marker -->
-    <slot name="marker" />
-    <!-- slot for popup -->
-    <slot v-if="marker" />
-  </div>
-</template>
-
 <script>
+import Vue from "vue";
 import withEvents from "../../lib/withEvents";
 import withSelfEvents from "./withSelfEvents";
 
@@ -23,9 +15,26 @@ const markerDOMEvents = {
   mouseleave: "mouseleave"
 };
 
+const Wrapper = Vue.extend({
+  name: "MarkerWrapper",
+  render() {
+    return null;
+  }
+});
+
+const WrapperConfig = {
+  name: "MarkerWrapper",
+  render() {
+    return null;
+  }
+};
+
 export default {
   name: "MapMarker",
   mixins: [withEvents, withSelfEvents],
+  components: {
+    Wrapper
+  },
 
   inject: ["mapbox", "map"],
 
@@ -69,15 +78,24 @@ export default {
   },
 
   watch: {
-    coordinates(lngLat) {
-      if (this.initial) return;
-      this.marker.setLngLat(lngLat);
-    },
+    // coordinates(lngLat) {
+    //   if (this.initial) return;
+    //   this.marker.setLngLat(lngLat);
+    // },
     draggable(next) {
       if (this.initial) return;
       this.marker.setDraggable(next);
     }
   },
+
+  // created() {
+  //   this.wrapper = Vue.extend({
+  //     name: "MarkerWrapper",
+  //     render(h) {
+  //       return h(null);
+  //     }
+  //   });
+  // },
 
   mounted() {
     const markerOptions = {
@@ -105,6 +123,14 @@ export default {
 
     this.initial = false;
     this.$_addMarker();
+  },
+
+  updated() {
+    console.log("UPDATED!");
+  },
+
+  beforeUpdate() {
+    console.log("BEFORE UPDATE!");
   },
 
   beforeDestroy() {
@@ -142,6 +168,45 @@ export default {
     togglePopup() {
       return this.marker.togglePopup();
     }
+  },
+
+  render() {
+    // console.log("RENDER!");
+    const children = this.$scopedSlots.length
+      ? this.$scopedSlots.default
+      : this.$slots.default;
+
+    return children;
+    //
+    //     const result = h(
+    //       "div",
+    //       {
+    //         style: {
+    //           display: "none"
+    //         }
+    //       },
+    //       children
+    //     );
+    //     console.log("1: ", this.$vnode, "2: ", result);
+    //     return result;
+    // return this.$vnode;
+    // console.log("CHIDREN", children);
+    // // return children;
+    // // return children;
+    // const self = this;
+    // return h(
+    //   WrapperConfig,
+    //   {
+    //     props: self.$props
+    //   },
+    //   children
+    // );
+    // if (this.$scopedSlots.default) {
+    //   return this.$scopedSlots.default;
+    // }
+    // if (this.$slots.default) {
+    //   return this.$slots.default;
+    // }
   }
 };
 </script>

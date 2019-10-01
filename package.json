@@ -1,6 +1,6 @@
 {
-  "name": "vue-mapbox",
-  "version": "0.4.1",
+  "name": "@webmapper/vue-mapbox",
+  "version": "0.7.0",
   "author": {
     "name": "soal",
     "email": "sorrrow.about.alice@gmail.com",
@@ -36,21 +36,21 @@
     "map-promisified": "latest"
   },
   "peerDependencies": {
-    "mapbox-gl": "^0.53.0",
-    "vue": "^2.6.6"
+    "mapbox-gl": "latest",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.1",
-    "@vue/cli-service": "^3.2.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/eslint-config-prettier": "^4.0.1",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
     "eslint-loader": "2.1.1",
-    "husky": "^1.2.0",
-    "lint-staged": "^8.1.0",
-    "vue": "^2.6.6",
-    "vue-template-compiler": "^2.6.6",
-    "vuepress": "^1.0.0-alpha.37"
+    "husky": "^1.3.1",
+    "lint-staged": "^8.2.1",
+    "vue": "^2.6.10",
+    "vue-template-compiler": "^2.6.10",
+    "vuepress": "^1.1.0"
   }
 }
